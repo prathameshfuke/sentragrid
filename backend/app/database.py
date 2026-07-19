@@ -185,6 +185,11 @@ class MockStore:
             "zone_name": zone.get("name", "Unknown"),
         }
         self.alerts[alert_id] = alert
+        # Keep only the last 100 alerts to prevent memory leaks
+        if len(self.alerts) > 100:
+            sorted_keys = sorted(self.alerts.keys(), key=lambda k: self.alerts[k].get("created_at", ""))
+            for old_key in sorted_keys[:len(self.alerts) - 100]:
+                self.alerts.pop(old_key, None)
         self._emit("alerts", alert)
         return alert
 
