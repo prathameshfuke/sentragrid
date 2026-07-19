@@ -5,7 +5,7 @@ import random
 import time
 from typing import Optional
 from app.database import get_db, reset_mock_store
-from app.services.risk_engine import evaluate_zone
+from app.services.risk_engine import evaluate_zone, evaluate_all_zones
 
 
 # ── Baseline sensor values ──
@@ -189,6 +189,7 @@ class Simulator:
                     return
                 await self._write_all_readings()
                 await self._move_workers_randomly(chance=0.05)
+                await evaluate_all_zones()
                 await asyncio.sleep(3.5)
 
             # ── PHASE 2: Gas starts rising in Coke Oven (30-60s) ──
@@ -208,8 +209,7 @@ class Simulator:
                     db.update_worker_position("worker-05", "zone-coke-oven")
 
                 # Evaluate risk
-                if h2s_val >= 7.0:
-                    await evaluate_zone("zone-coke-oven")
+                await evaluate_all_zones()
 
                 await asyncio.sleep(4.0)
 
@@ -239,6 +239,7 @@ class Simulator:
                 self._overrides["sensor-coke-co"] = 20.0 + (h2s_val - 9.0) * 3
                 await self._write_all_readings()
                 await self._move_workers_randomly(chance=0.03)
+                await evaluate_all_zones()
                 await asyncio.sleep(5.0)
 
             # ── PHASE 4: Critical alert fires (90-120s) ──
@@ -255,15 +256,14 @@ class Simulator:
                 await self._write_all_readings()
 
                 # Trigger risk evaluation
-                await evaluate_zone("zone-coke-oven")
-                await evaluate_zone("zone-byproduct")
+                await evaluate_all_zones()
 
                 await asyncio.sleep(5.0)
 
             # Storage tank farm sympathetic temperature rise
             self._overrides["sensor-tank-temp"] = 65.0
             await self._write_all_readings()
-            await evaluate_zone("zone-tank-farm")
+            await evaluate_all_zones()
 
             await asyncio.sleep(5.0)
 
@@ -286,6 +286,7 @@ class Simulator:
                 self._overrides["sensor-tank-temp"] = max(42.0, 50.0 + (h2s_val - 5.0) * 3)
                 await self._write_all_readings()
                 await self._move_workers_randomly(chance=0.05)
+                await evaluate_all_zones()
                 await asyncio.sleep(5.0)
 
             # ── PHASE 6: Return to normal ──
@@ -299,6 +300,7 @@ class Simulator:
                     return
                 await self._write_all_readings()
                 await self._move_workers_randomly(chance=0.08)
+                await evaluate_all_zones()
                 await asyncio.sleep(4.0)
 
             self.phase_description = "Demo sequence complete"

@@ -1,9 +1,12 @@
 """SentraGrid Backend — Compound Risk Detection Engine."""
 
 import json
+import time
 from typing import Optional
 from app.database import get_db
 from app.services.llm_client import call_llm
+
+_last_llm_call_time: dict[str, float] = {}
 
 
 # ── Thresholds ──
@@ -218,10 +221,16 @@ Output a JSON object with these fields:
     user_prompt = f"Current zone state:\n{json.dumps(context, indent=2)}"
 
     try:
+        current_time = time.time()
+        last_call = _last_llm_call_time.get(zone_id, 0.0)
+        if current_time - last_call < 45.0:
+            raise ValueError(f"LLM call throttled for zone {zone_id} (last call was {round(current_time - last_call, 1)}s ago)")
+
         llm_response = await call_llm(system_prompt, user_prompt, json_mode=True)
         result = json.loads(llm_response)
+        _last_llm_call_time[zone_id] = current_time
     except Exception as e:
-        print(f"[RiskEngine] LLM call failed, using rule-based alert: {e}")
+        print(f"[RiskEngine] LLM call failed or throttled, using rule-based alert: {e}")
         
         # Calculate dynamic fallback values
         single_sensor_missed = True
