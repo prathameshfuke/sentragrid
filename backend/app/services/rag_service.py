@@ -21,11 +21,42 @@ def _has_live_llm() -> bool:
     return bool(settings.groq_api_key or settings.gemini_api_key)
 
 
+class HFEmbeddingModel:
+    def encode(self, text: str) -> list[float]:
+        import time
+        import httpx
+        clean_text = text.replace("\n", " ").strip()
+        url = "https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2"
+        
+        # Hugging Face can return 503 if model is loading. Try up to 3 times with backoff.
+        for attempt in range(3):
+            try:
+                with httpx.Client(timeout=25.0) as client:
+                    response = client.post(url, json={"inputs": clean_text})
+                    if response.status_code == 200:
+                        result = response.json()
+                        if isinstance(result, list):
+                            if len(result) > 0 and isinstance(result[0], list):
+                                return result[0]
+                            return result
+                        raise ValueError(f"Invalid response format from Hugging Face: {result}")
+                    elif response.status_code == 503:
+                        # Model is loading
+                        est_time = response.json().get("estimated_time", 10.0)
+                        logger.info(f"[RAG] Hugging Face model currently loading. Waiting {est_time}s (attempt {attempt + 1}/3)...")
+                        time.sleep(min(est_time, 8.0))
+                    else:
+                        raise ValueError(f"Hugging Face API returned status {response.status_code}: {response.text}")
+            except Exception as e:
+                if attempt == 2:
+                    raise e
+                time.sleep(1.0)
+        raise ValueError("Failed to retrieve embeddings from Hugging Face Inference API after retries.")
+
 def _get_embedding_model():
     global _embedding_model
     if _embedding_model is None:
-        from sentence_transformers import SentenceTransformer
-        _embedding_model = SentenceTransformer(settings.embedding_model)
+        _embedding_model = HFEmbeddingModel()
     return _embedding_model
 
 
