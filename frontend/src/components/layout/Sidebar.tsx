@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const NAV_ITEMS = [
-  { href: '/', label: 'Dashboard', icon: GridIcon },
+  { href: '/', label: 'Portal', icon: HomeIcon },
+  { href: '/dashboard', label: 'Console', icon: GridIcon },
   { href: '/heatmap', label: 'Live Map', icon: MapIcon },
   { href: '/alerts', label: 'Alerts', icon: AlertIcon },
   { href: '/permits', label: 'Permits', icon: PermitIcon },
   { href: '/intelligence', label: 'Intel', icon: BrainIcon },
+  { href: '/docs', label: 'Docs', icon: DocsIcon },
 ];
 
 export default function Sidebar() {
@@ -66,6 +68,24 @@ export default function Sidebar() {
 }
 
 // ── Icon Components ──
+
+function HomeIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+      <polyline points="9 22 9 12 15 12 15 22" />
+    </svg>
+  );
+}
+
+function DocsIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+    </svg>
+  );
+}
 
 function GridIcon({ className }: { className?: string }) {
   return (
