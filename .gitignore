@@ -1,0 +1,22 @@
+# Environment variables
+.env
+.env.local
+.env.production
+.env.development
+.env.staging
+
+# Python
+backend/venv/
+backend/.env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Node / Next.js
+node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+.DS_Store

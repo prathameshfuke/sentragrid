@@ -1,0 +1,110 @@
+[
+  {
+    "id": "inc-001",
+    "title": "H2S leak during coke-oven door replacement — near miss",
+    "content": "During scheduled replacement of coke-oven battery door #7, a residual H2S pocket was released when seals were broken. Two maintenance workers experienced mild exposure symptoms (eye irritation, nausea). The gas detector alarm triggered at 12 ppm, well above the 10 ppm action level. Root cause: the oven had not been fully purged before maintenance commenced. The permit-to-work checklist did not include a mandatory gas-free certificate for door replacement tasks. Corrective action: updated PTW procedure to require gas-free certification for all coke-oven door maintenance.",
+    "source": "near_miss_log"
+  },
+  {
+    "id": "inc-002",
+    "title": "Simultaneous hot work and gas venting — confined space incident",
+    "content": "A welding crew was performing structural repairs in the by-product recovery section while a scheduled gas venting operation was underway in the adjacent gas holder area. The vented coke-oven gas migrated to the welding location through an open duct. CO concentration spiked to 48 ppm in the work zone. Welding was halted by the shift supervisor after the portable gas monitor alarmed. No injuries occurred. Root cause: the two permits were issued by different shift teams without cross-reference. Corrective action: implemented a mandatory adjacent-zone permit check in the PTW system.",
+    "source": "near_miss_log"
+  },
+  {
+    "id": "inc-003",
+    "title": "Electrical arc flash during monsoon — substation incident",
+    "content": "During heavy monsoon rainfall, water ingress into Electrical Substation B caused a phase-to-ground fault resulting in an arc flash event. The arc blast damaged the bus-bar section and tripped the main breaker, cutting power to the coke-oven pushing machine for 47 minutes. One electrician suffered minor burns to forearms despite wearing PPE. Root cause: deteriorated cable gland seals allowed water entry. The maintenance schedule for seal inspection had lapsed by 3 months. Corrective action: quarterly seal integrity checks added to preventive maintenance program.",
+    "source": "near_miss_log"
+  },
+  {
+    "id": "inc-004",
+    "title": "Worker found unconscious in confined space — gas holder inspection",
+    "content": "An instrument technician entered Gas Holder #2 for routine level-sensor calibration. The confined space entry permit was valid, but the attendant left the entry point temporarily to retrieve tools. The technician was found unconscious approximately 8 minutes later. Atmospheric testing showed oxygen levels at 17.2% (below the 19.5% safe minimum) due to nitrogen blanketing that had not been fully vented. The worker was rescued and recovered after oxygen therapy. Root cause: the nitrogen purge valve was left partially open from a prior maintenance task. Corrective action: lockout/tagout verification added to confined space entry checklist.",
+    "source": "near_miss_log"
+  },
+  {
+    "id": "inc-005",
+    "title": "Temperature excursion in storage tank farm triggers foam system",
+    "content": "Tank T-104 (light diesel oil storage) experienced a temperature rise from 42°C to 78°C over a 3-hour period. The automatic foam suppression system activated at 75°C. Investigation revealed a heating coil control valve had stuck in the open position, continuously circulating steam through the tank's heating jacket. No fire occurred, but the foam discharge contaminated approximately 200 liters of product. Root cause: the control valve actuator had not been serviced per schedule. Corrective action: critical valve actuator PM frequency increased from annual to semi-annual.",
+    "source": "near_miss_log"
+  },
+  {
+    "id": "inc-006",
+    "title": "Crane load drop near personnel — loading bay incident",
+    "content": "During loading of steel billets, the overhead crane's main hoist brake failed, causing a 4-tonne billet bundle to drop approximately 0.5 meters onto the flatbed truck. Two ground crew members were within the fall zone but were not struck. The load landed offset, damaging the truck bed. Root cause: brake disc wear exceeded replacement limits. The crane's last inspection had noted 'marginal' brake condition but the crane was not taken out of service. Corrective action: any inspection finding rated 'marginal' now triggers immediate downtime for repair.",
+    "source": "near_miss_log"
+  },
+  {
+    "id": "inc-007",
+    "title": "Visakhapatnam Steel Plant — coke oven gas leak reference case",
+    "content": "The Visakhapatnam Steel Plant (Rashtriya Ispat Nigam Limited) coke-oven battery complex experienced multiple gas leak incidents attributed to aging infrastructure, inadequate seal maintenance, and gaps in the permit-to-work coordination system. Coke-oven gas (a mixture containing H2, CH4, CO, H2S, and other compounds) poses compound risks: H2S is immediately toxic, CO causes delayed asphyxiation, and the hydrocarbon components create explosion potential when combined with hot-work ignition sources. The DGFASLI investigation highlighted that no single sensor reading predicted the incidents — it was the combination of elevated gas levels, concurrent maintenance activities, and degraded safety interlocks that created the hazardous conditions. This case study directly motivates the compound-risk-detection approach: correlating multiple sensor streams with operational activity data to identify dangerous combinations that individual threshold alarms miss.",
+    "source": "near_miss_log"
+  },
+  {
+    "id": "inc-008",
+    "title": "OISD Standard 105 — Work Permit System guidelines",
+    "content": "OISD-STD-105 establishes the framework for permit-to-work (PTW) systems in petroleum and petrochemical installations, widely adopted across Indian industrial facilities. Key requirements include: (1) Every job involving hazardous work must be covered by a written permit specifying the nature of work, hazards involved, and precautions required. (2) Permits for hot work, confined space entry, and work at height are classified as 'special permits' requiring additional authorization. (3) Before issuing any permit, the area supervisor must conduct a site inspection and verify atmospheric conditions. (4) When multiple permits are active in the same or adjacent areas, a cross-referencing system must be used to identify potential interactions between activities. (5) Permits are valid for a maximum of one shift and must be revalidated for continuation. (6) A permit isolation certificate is required when energy sources must be locked out for the permitted work. The standard emphasizes that the PTW system is a communication tool — it ensures everyone involved in the work, from the requesting department to the safety department, shares a common understanding of the hazards and precautions.",
+    "source": "oisd_guideline"
+  },
+  {
+    "id": "inc-009",
+    "title": "OISD Standard 116 — Fire Protection Facilities for Petroleum Installations",
+    "content": "OISD-STD-116 prescribes fire protection requirements for petroleum refineries, oil/gas processing plants, and petrochemical complexes. Relevant provisions include: (1) Fixed fire water systems must maintain minimum residual pressure of 7 kg/cm² at the hydraulically most remote point. (2) Storage tank farms handling flammable liquids must have foam-based fire suppression systems with automatic activation on temperature or flame detection. (3) Coke-oven and gas-holder areas are classified as Zone 1 hazardous areas, requiring explosion-proof electrical fittings and intrinsically safe instrumentation. (4) Hot work in or near Zone 1 areas requires a fire watch to be posted with appropriate extinguishing equipment for the duration of the permit plus 30 minutes after work completion. (5) Gas detection systems in coke-oven battery areas must provide continuous monitoring with audible and visual alarms at both local and control room locations. (6) Emergency shutdown systems must be capable of isolating fuel gas supplies within 30 seconds of activation.",
+    "source": "oisd_guideline"
+  },
+  {
+    "id": "inc-010",
+    "title": "OISD Standard 154 — Safety Instrumented Systems",
+    "content": "OISD-STD-154 addresses the design, installation, and maintenance of safety instrumented systems (SIS) in process industries. Key elements: (1) Safety Integrity Level (SIL) assessment must be performed for all safety-critical loops. (2) Gas detection systems in hazardous areas must achieve a minimum of SIL 2 reliability. (3) SIS must be independent from the basic process control system (BPCS) to prevent common-cause failures. (4) Proof testing of safety-critical instruments must be performed at intervals determined by the SIL assessment, typically every 6-12 months. (5) When multiple gas sensors cover the same zone, a voting logic (e.g., 2-out-of-3) should be used to reduce false alarms while maintaining detection reliability. (6) All SIS overrides and bypasses must be logged with operator identification, reason, and duration, and must trigger a management notification if the bypass exceeds the permitted duration.",
+    "source": "oisd_guideline"
+  },
+  {
+    "id": "inc-011",
+    "title": "Factories Act 1948 — Section 7A: General duties of occupier",
+    "content": "Section 7A of the Factories Act, 1948 (as amended) establishes the general duties of every occupier of a factory. The occupier must ensure, so far as is reasonably practicable, the health, safety, and welfare of all workers while they are at work in the factory. This includes: (a) the provision and maintenance of plant and systems of work that are safe and without risks to health; (b) arrangements for ensuring safety and absence of risks to health in connection with the use, handling, storage, and transport of articles and substances; (c) the provision of information, instruction, training, and supervision as necessary to ensure the health and safety of all workers; (d) the maintenance of all places of work in a condition that is safe and without risks to health, including the provision of safe means of access and egress; (e) the provision, maintenance, and monitoring of a working environment that is safe, without risks to health, and adequate as regards facilities and arrangements for the welfare of workers.",
+    "source": "factory_act"
+  },
+  {
+    "id": "inc-012",
+    "title": "Factories Act 1948 — Section 41B: Safety Officers",
+    "content": "Section 41B requires that in every factory wherein one thousand or more workers are ordinarily employed, or wherein any manufacturing process or operation is carried on which involves any risk of bodily injury, poisoning, or disease, the occupier shall employ persons possessing prescribed qualifications as Safety Officers. The Safety Officers are responsible for: advising the management on matters related to safety, health, and welfare of workers; inspecting plants and equipment for hazardous conditions; investigating all industrial accidents and near-miss incidents; maintaining safety records and submitting periodic reports to the Chief Inspector of Factories; organizing safety training programs and emergency drills; ensuring compliance with all statutory safety requirements.",
+    "source": "factory_act"
+  },
+  {
+    "id": "inc-013",
+    "title": "DGFASLI guidelines on compound hazard assessment in steel plants",
+    "content": "The Directorate General of Factory Advice Service and Labour Institutes (DGFASLI) has issued guidelines specific to integrated steel plants addressing compound hazard assessment. Key recommendations: (1) Risk assessment must consider the interaction between simultaneously occurring hazards, not just individual hazard thresholds. For example, a gas concentration at 70% of the alarm threshold combined with elevated temperature and active maintenance work may represent a higher overall risk than any single parameter at 100% of its threshold. (2) Plants should implement a multi-parameter risk scoring system that weights and combines inputs from gas detection, temperature monitoring, operational status, and maintenance activity. (3) Coke-oven battery operations require special attention because they generate multiple toxic and flammable gases simultaneously, and routine operations such as pushing, quenching, and door maintenance create transient exposure peaks. (4) The work permit system should incorporate real-time sensor data in the authorization decision, automatically flagging permits when ambient conditions have deteriorated since the initial area assessment.",
+    "source": "oisd_guideline"
+  },
+  {
+    "id": "inc-014",
+    "title": "Gas accumulation in pump house — water treatment near miss",
+    "content": "During routine maintenance of a chemical dosing pump in the water treatment plant, a maintenance technician detected a strong odor of chlorine gas. Investigation revealed that a corroded fitting on the chlorine dosing line had developed a slow leak. The pump house, being a semi-enclosed structure with limited ventilation, had accumulated chlorine concentration to 1.8 ppm (OSHA PEL is 1 ppm ceiling). The technician evacuated immediately and the area was cordoned off. Root cause: the chlorine line fittings were PVC schedule 40, which had degraded due to UV exposure in the partially open structure. Corrective action: replaced all PVC fittings with CPVC schedule 80 rated for chlorine service, and installed a continuous chlorine gas monitor with remote alarm.",
+    "source": "near_miss_log"
+  },
+  {
+    "id": "inc-015",
+    "title": "Pressure relief valve failure during tank cleaning — storage farm",
+    "content": "During internal cleaning of storage tank T-201, the pressure/vacuum relief valve failed to open when nitrogen was being introduced for inerting. Tank pressure rose to 0.35 bar gauge (design rating 0.2 bar gauge) before a field operator noticed the pressure gauge reading and manually opened the vent line. The tank shell showed no visible deformation but was taken out of service for inspection. Root cause: the relief valve disc was stuck due to product residue accumulation. The valve had last been bench-tested 14 months prior (exceeding the 12-month test interval). Corrective action: relief valve test schedule tracking moved to a computerized maintenance management system with automatic overdue notifications.",
+    "source": "near_miss_log"
+  },
+  {
+    "id": "inc-016",
+    "title": "Best practices for simultaneous operations management in coke plants",
+    "content": "Based on analysis of incidents in Indian coke-oven plants and international best practices, the following SIMOPS (Simultaneous Operations) management guidelines are recommended: (1) Maintain a live conflict matrix mapping all zone pairs and the permit combinations that are prohibited or require additional controls (e.g., hot work in Zone A is prohibited while confined space entry is active in adjacent Zone B). (2) Implement a spatial buffer zone of at least 15 meters around any hot work activity where elevated gas readings have been recorded in the past 24 hours. (3) Use electronic permit boards visible in the control room showing all active permits overlaid on the plant layout, enabling immediate visual identification of permit clustering. (4) Require a SIMOPS review meeting before authorizing more than three simultaneous special permits on any single shift. (5) Deploy mobile gas detectors on all workers entering zones adjacent to active hot work or confined space entry permits, regardless of whether those workers' own tasks require gas monitoring.",
+    "source": "oisd_guideline"
+  },
+  {
+    "id": "inc-017",
+    "title": "Electrical fault coinciding with gas alarm — compound incident",
+    "content": "An electrical short circuit in a junction box in the by-product plant occurred during a period when the area H2S monitor was already showing elevated readings (7.5 ppm, below the 10 ppm alarm threshold but above normal baseline of 2 ppm). The short circuit generated a spark visible to nearby workers. While no ignition of the ambient gas occurred (H2S LEL is approximately 43,000 ppm, far above 7.5 ppm), the combination of an electrical fault and elevated toxic gas created a dual-hazard evacuation scenario that was not covered by the single-hazard emergency response procedures. Workers were unsure whether to respond to the electrical hazard protocol (de-energize and isolate) or the gas hazard protocol (evacuate upwind), as the two protocols had conflicting assembly point designations. Root cause: emergency response procedures had been written independently for each hazard type and never reviewed for conflict. Corrective action: developed integrated compound-hazard response procedures with unified assembly points and a hazard-priority decision tree.",
+    "source": "near_miss_log"
+  },
+  {
+    "id": "inc-018",
+    "title": "Shift handover gap leads to permit duplication — process safety event",
+    "content": "During a shift change, an outgoing shift supervisor verbally communicated that a hot work permit for the workshop area was about to expire but the welding job was incomplete. The incoming supervisor, not finding the original permit paperwork in the control room (it was at the work site), issued a new hot work permit for the same zone. Two active hot work permits now existed for adjacent bays in the workshop, each with its own fire watch posted. Neither fire watch was aware of the other permit, resulting in an under-resourced fire watch coverage pattern. A stray spark from one welding operation ignited oily rags approximately 10 meters from the other welding operation. The fire was extinguished quickly by the fire watch, but the incident exposed the risk of permit duplication. Root cause: paper-based permit system with no real-time tracking of active permits. Corrective action: implemented electronic permit tracking system with automatic duplicate-zone detection.",
+    "source": "near_miss_log"
+  }
+]

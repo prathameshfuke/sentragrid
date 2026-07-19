@@ -1,0 +1,102 @@
+[
+  {
+    "id": "zone-coke-oven",
+    "name": "Coke Oven Battery",
+    "zone_type": "hot_work_area",
+    "x_coord": 150,
+    "y_coord": 100,
+    "width": 180,
+    "height": 120,
+    "baseline_risk_level": "medium"
+  },
+  {
+    "id": "zone-byproduct",
+    "name": "By-Product Plant",
+    "zone_type": "confined_space",
+    "x_coord": 380,
+    "y_coord": 80,
+    "width": 160,
+    "height": 100,
+    "baseline_risk_level": "medium"
+  },
+  {
+    "id": "zone-gas-holder",
+    "name": "Gas Holder Station",
+    "zone_type": "storage",
+    "x_coord": 600,
+    "y_coord": 60,
+    "width": 140,
+    "height": 110,
+    "baseline_risk_level": "high"
+  },
+  {
+    "id": "zone-tank-farm",
+    "name": "Storage Tank Farm",
+    "zone_type": "storage",
+    "x_coord": 130,
+    "y_coord": 300,
+    "width": 170,
+    "height": 100,
+    "baseline_risk_level": "medium"
+  },
+  {
+    "id": "zone-workshop",
+    "name": "Workshop / Fabrication",
+    "zone_type": "general",
+    "x_coord": 370,
+    "y_coord": 270,
+    "width": 150,
+    "height": 90,
+    "baseline_risk_level": "low"
+  },
+  {
+    "id": "zone-electrical",
+    "name": "Electrical Substation",
+    "zone_type": "electrical",
+    "x_coord": 580,
+    "y_coord": 260,
+    "width": 130,
+    "height": 90,
+    "baseline_risk_level": "medium"
+  },
+  {
+    "id": "zone-control-room",
+    "name": "Control Room",
+    "zone_type": "control",
+    "x_coord": 380,
+    "y_coord": 440,
+    "width": 160,
+    "height": 80,
+    "baseline_risk_level": "low"
+  },
+  {
+    "id": "zone-loading-bay",
+    "name": "Loading Bay",
+    "zone_type": "loading",
+    "x_coord": 600,
+    "y_coord": 430,
+    "width": 140,
+    "height": 90,
+    "baseline_risk_level": "low"
+  },
+  {
+    "id": "zone-water-treatment",
+    "name": "Water Treatment",
+    "zone_type": "water_treatment",
+    "x_coord": 130,
+    "y_coord": 470,
+    "width": 150,
+    "height": 80,
+    "baseline_risk_level": "low"
+  },
+  {
+    "id": "zone-admin",
+    "name": "Administrative Block",
+    "zone_type": "general",
+    "x_coord": 790,
+    "y_coord": 350,
+    "width": 130,
+    "height": 100,
+    "baseline_risk_level": "low"
+  }
+]

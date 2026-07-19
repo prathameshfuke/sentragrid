@@ -1,0 +1,14 @@
+[
+  {"id": "worker-01", "name": "R. Patel", "role": "Safety Inspector"},
+  {"id": "worker-02", "name": "S. Kumar", "role": "Maintenance Technician"},
+  {"id": "worker-03", "name": "A. Reddy", "role": "Process Operator"},
+  {"id": "worker-04", "name": "V. Sharma", "role": "Electrician"},
+  {"id": "worker-05", "name": "M. Singh", "role": "Welder"},
+  {"id": "worker-06", "name": "D. Rao", "role": "Instrument Technician"},
+  {"id": "worker-07", "name": "P. Gupta", "role": "Shift Supervisor"},
+  {"id": "worker-08", "name": "K. Nair", "role": "Process Operator"},
+  {"id": "worker-09", "name": "T. Das", "role": "Helper"},
+  {"id": "worker-10", "name": "J. Mishra", "role": "Crane Operator"},
+  {"id": "worker-11", "name": "B. Joshi", "role": "Safety Officer"},
+  {"id": "worker-12", "name": "N. Verma", "role": "Maintenance Technician"}
+]

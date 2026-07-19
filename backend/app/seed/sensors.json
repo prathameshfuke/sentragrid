@@ -1,0 +1,31 @@
+[
+  {"id": "sensor-coke-h2s", "zone_id": "zone-coke-oven", "sensor_type": "gas_h2s", "unit": "ppm"},
+  {"id": "sensor-coke-co", "zone_id": "zone-coke-oven", "sensor_type": "gas_co", "unit": "ppm"},
+  {"id": "sensor-coke-temp", "zone_id": "zone-coke-oven", "sensor_type": "temperature", "unit": "°C"},
+
+  {"id": "sensor-byproduct-h2s", "zone_id": "zone-byproduct", "sensor_type": "gas_h2s", "unit": "ppm"},
+  {"id": "sensor-byproduct-co", "zone_id": "zone-byproduct", "sensor_type": "gas_co", "unit": "ppm"},
+  {"id": "sensor-byproduct-temp", "zone_id": "zone-byproduct", "sensor_type": "temperature", "unit": "°C"},
+
+  {"id": "sensor-gas-holder-h2s", "zone_id": "zone-gas-holder", "sensor_type": "gas_h2s", "unit": "ppm"},
+  {"id": "sensor-gas-holder-pressure", "zone_id": "zone-gas-holder", "sensor_type": "pressure", "unit": "kPa"},
+  {"id": "sensor-gas-holder-temp", "zone_id": "zone-gas-holder", "sensor_type": "temperature", "unit": "°C"},
+
+  {"id": "sensor-tank-h2s", "zone_id": "zone-tank-farm", "sensor_type": "gas_h2s", "unit": "ppm"},
+  {"id": "sensor-tank-co", "zone_id": "zone-tank-farm", "sensor_type": "gas_co", "unit": "ppm"},
+  {"id": "sensor-tank-temp", "zone_id": "zone-tank-farm", "sensor_type": "temperature", "unit": "°C"},
+
+  {"id": "sensor-workshop-co", "zone_id": "zone-workshop", "sensor_type": "gas_co", "unit": "ppm"},
+  {"id": "sensor-workshop-temp", "zone_id": "zone-workshop", "sensor_type": "temperature", "unit": "°C"},
+
+  {"id": "sensor-electrical-temp", "zone_id": "zone-electrical", "sensor_type": "temperature", "unit": "°C"},
+  {"id": "sensor-electrical-pressure", "zone_id": "zone-electrical", "sensor_type": "pressure", "unit": "kPa"},
+
+  {"id": "sensor-control-temp", "zone_id": "zone-control-room", "sensor_type": "temperature", "unit": "°C"},
+
+  {"id": "sensor-loading-co", "zone_id": "zone-loading-bay", "sensor_type": "gas_co", "unit": "ppm"},
+  {"id": "sensor-loading-temp", "zone_id": "zone-loading-bay", "sensor_type": "temperature", "unit": "°C"},
+
+  {"id": "sensor-water-temp", "zone_id": "zone-water-treatment", "sensor_type": "temperature", "unit": "°C"},
+  {"id": "sensor-water-pressure", "zone_id": "zone-water-treatment", "sensor_type": "pressure", "unit": "kPa"}
+]
