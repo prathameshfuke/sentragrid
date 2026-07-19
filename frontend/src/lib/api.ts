@@ -192,6 +192,14 @@ export async function stopSim() {
   return apiFetch<{ message: string; status: SimulatorStatus }>('/api/simulator/stop', { method: 'POST' });
 }
 
+export async function runDemoScenario() {
+  return apiFetch<{ status: string; message: string }>('/api/demo/run', { method: 'POST' });
+}
+
+export async function resetDemoScenario() {
+  return apiFetch<{ status: string; message: string }>('/api/demo/reset', { method: 'POST' });
+}
+
 export function createEventSource(): EventSource {
   return new EventSource(`${API_BASE}/api/simulator/stream`);
 }

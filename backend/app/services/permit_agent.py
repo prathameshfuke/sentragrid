@@ -118,6 +118,36 @@ async def evaluate_permit_request(
                     f"'{adj_name}' — cross-zone conflict"
                 )
 
+        # Check adjacent zone risk level and gas trend for hot work
+        adj_risk = _get_zone_risk_score(adj_zone_id)
+        if adj_risk["level"] in ("critical", "high"):
+            conflicts.append(
+                f"Adjacent zone '{adj_name}' is currently at {adj_risk['level']} risk level "
+                f"(score: {adj_risk['score']})"
+            )
+
+        if permit_type == "hot_work":
+            adj_sensors = db.get_sensors(adj_zone_id)
+            for sensor in adj_sensors:
+                sensor_type = sensor["sensor_type"]
+                if sensor_type in ("gas_h2s", "gas_co"):
+                    history = db.get_sensor_history(sensor["id"], limit=3)
+                    if history:
+                        latest_val = history[-1]["value"]
+                        threshold = THRESHOLDS.get(sensor_type, {})
+                        if latest_val >= threshold.get("warning", float("inf")) * 0.6:
+                            conflicts.append(
+                                f"Elevated {sensor_type} ({latest_val} {threshold.get('unit', '')}) "
+                                f"detected in adjacent zone '{adj_name}'"
+                            )
+                        if len(history) >= 2:
+                            values = [r["value"] for r in history]
+                            if values[-1] > values[-2]:
+                                conflicts.append(
+                                    f"Rising {sensor_type} trend in adjacent zone '{adj_name}': "
+                                    f"{' → '.join(str(v) for v in values)}"
+                                )
+
     # 5. Decision
     approved = len(conflicts) == 0
 

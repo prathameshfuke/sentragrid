@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.config import settings
-from app.routers import sensors, alerts, permits, rag, simulator
+from app.routers import sensors, alerts, permits, rag, simulator, demo
 from app.services.simulator import get_simulator
 
 logger = logging.getLogger("sentragrid.main")
@@ -35,7 +35,7 @@ app.add_middleware(
 # Limit payload size to 512KB to protect memory
 @app.middleware("http")
 async def limit_body_size_middleware(request: Request, call_next):
-    if request.url.path == "/api/simulator/stream":
+    if request.url.path == "/api/simulator/stream" or request.url.path.startswith("/api/demo"):
         return await call_next(request)
     content_length = request.headers.get("content-length")
     if content_length:
@@ -52,7 +52,7 @@ async def limit_body_size_middleware(request: Request, call_next):
 # Request memory profiler middleware
 @app.middleware("http")
 async def log_request_memory_middleware(request: Request, call_next):
-    if request.url.path == "/api/simulator/stream":
+    if request.url.path == "/api/simulator/stream" or request.url.path.startswith("/api/demo"):
         return await call_next(request)
     rss_before = get_current_rss_mb()
     response = await call_next(request)
@@ -68,6 +68,7 @@ app.include_router(alerts.router)
 app.include_router(permits.router)
 app.include_router(rag.router)
 app.include_router(simulator.router)
+app.include_router(demo.router)
 
 
 @app.exception_handler(Exception)

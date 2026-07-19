@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
-import { getDashboard, getRecentAlerts, startDemoSim, startNormalSim, stopSim, type DashboardKPIs, type Alert, type SimulatorStatus } from '@/lib/api';
+import { getDashboard, getRecentAlerts, startDemoSim, startNormalSim, stopSim, runDemoScenario, resetDemoScenario, type DashboardKPIs, type Alert, type SimulatorStatus } from '@/lib/api';
 import { useRealtimeStream } from '@/hooks/useRealtimeStream';
 
 export default function DashboardPage() {
@@ -43,9 +43,13 @@ export default function DashboardPage() {
     }
   }, [streamAlerts.length, latestReading, fetchData]);
 
-  const handleStartDemo = async () => {
-    await startDemoSim();
-    fetchData();
+  const handleRunDemoScenario = async () => {
+    try {
+      await runDemoScenario();
+      fetchData();
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const handleStartNormal = async () => {
@@ -56,6 +60,15 @@ export default function DashboardPage() {
   const handleStop = async () => {
     await stopSim();
     fetchData();
+  };
+
+  const handleResetDemo = async () => {
+    try {
+      await resetDemoScenario();
+      fetchData();
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -73,25 +86,44 @@ export default function DashboardPage() {
         <div className="flex items-center gap-2">
           {simStatus?.running ? (
             <>
-              <span className="text-[10px] font-mono text-amber-warn">
-                {simStatus.mode.toUpperCase()} — Phase {simStatus.phase}
+              <span className="text-[10px] font-mono text-amber-warn animate-pulse">
+                {simStatus.mode === 'demo' ? 'DEMO RUNNING' : simStatus.mode.toUpperCase()} — Phase {simStatus.phase}
               </span>
               <button onClick={handleStop} className="btn btn-danger text-xs py-1 px-3">
                 Stop Sim
               </button>
+              <button onClick={handleResetDemo} className="btn text-xs py-1 px-3 border border-border">
+                Reset Demo
+              </button>
             </>
           ) : (
             <>
-              <button onClick={handleStartDemo} className="btn btn-primary text-xs py-1 px-3">
-                Run Demo
+              <button onClick={handleRunDemoScenario} className="btn btn-primary text-xs py-1 px-3 font-semibold tracking-wide">
+                Run Demo Scenario
               </button>
               <button onClick={handleStartNormal} className="btn text-xs py-1 px-3">
                 Normal Sim
+              </button>
+              <button onClick={handleResetDemo} className="btn text-xs py-1 px-3 border border-border">
+                Reset Demo
               </button>
             </>
           )}
         </div>
       </div>
+
+      {/* Demo Progress Banner */}
+      {simStatus?.running && simStatus.mode === 'demo' && (
+        <div className="bg-phosphor-dim border border-phosphor/30 text-phosphor px-3 py-2.5 rounded-sm font-mono text-xs flex items-center gap-2.5 animate-pulse">
+          <span className="live-dot w-2 h-2 bg-phosphor shrink-0"></span>
+          <span>
+            <strong>DEMO ACTIVE</strong>: {simStatus.phase_description}
+          </span>
+          <span className="ml-auto text-[10px] text-dim-text">
+            Phase {simStatus.phase} • {Math.round(simStatus.elapsed_seconds)}s elapsed
+          </span>
+        </div>
+      )}
 
       {/* KPI Cards */}
       {error && (
