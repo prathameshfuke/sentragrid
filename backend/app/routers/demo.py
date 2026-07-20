@@ -49,7 +49,7 @@ async def _execute_demo_sequence():
         sim.phase_description = "Demo Phase 2: Gas levels rising in Gas Holder Station"
         
         # Climb gas readings below warning threshold (7.0 ppm)
-        gas_climb = [3.2, 4.8, 5.9, 6.6]
+        gas_climb = [3.2, 4.8, 6.2]
         for i, val in enumerate(gas_climb):
             if not sim.running or sim.mode != "demo":
                 return
@@ -111,8 +111,8 @@ async def _execute_demo_sequence():
         sim.phase = 5
         sim.phase_description = "Demo Phase 5: Critical alert active. Gas Holder Station in evacuation mode."
         
-        # Final persist hold
-        for _ in range(30):
+        # Final persist hold (60 seconds to align with RAG walkthrough audio)
+        for _ in range(60):
             if not sim.running or sim.mode != "demo":
                 return
             await asyncio.sleep(1.0)
