@@ -1,5 +1,7 @@
 # SentraGrid: Real-Time Compound Risk Intelligence for Industrial Plants
 
+![SentraGrid Banner](sentragrid_horizontal_dark.png)
+
 SentraGrid is an advanced, AI-powered industrial safety platform designed to prevent catastrophic plant accidents by identifying **compound risk patterns** that traditional, single-sensor alarms completely miss. 
 
 By unifying real-time gas/temperature telemetry, geospatial worker positions, and active work permits into a centralized intelligence system, SentraGrid eliminates the critical visibility gaps responsible for **73% of plant near-misses** (according to the FICCI Industrial Safety Report).

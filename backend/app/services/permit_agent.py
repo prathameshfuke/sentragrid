@@ -89,6 +89,7 @@ async def evaluate_permit_request(
                 conflicts.append(
                     f"{sensor_type} at {latest_value} — elevated for confined space entry"
                 )
+                risk_level = max(risk_level, "medium", key=lambda x: ["low", "medium", "high", "critical"].index(x))
 
     # 3. Check active permits in same zone
     active_permits = db.get_permits(status="active", zone_id=zone_id)
@@ -113,10 +114,15 @@ async def evaluate_permit_request(
         for adj_permit in adj_permits:
             pair = frozenset([permit_type, adj_permit["permit_type"]])
             if pair in PERMIT_CONFLICTS:
+                severity = PERMIT_CONFLICTS[pair]
                 conflicts.append(
                     f"Active {adj_permit['permit_type']} permit in adjacent zone "
                     f"'{adj_name}' — cross-zone conflict"
                 )
+                if severity == "critical":
+                    risk_level = max(risk_level, "high", key=lambda x: ["low", "medium", "high", "critical"].index(x))
+                else:
+                    risk_level = max(risk_level, "medium", key=lambda x: ["low", "medium", "high", "critical"].index(x))
 
         # Check adjacent zone risk level and gas trend for hot work
         adj_risk = _get_zone_risk_score(adj_zone_id)
@@ -125,6 +131,10 @@ async def evaluate_permit_request(
                 f"Adjacent zone '{adj_name}' is currently at {adj_risk['level']} risk level "
                 f"(score: {adj_risk['score']})"
             )
+            if adj_risk["level"] == "critical":
+                risk_level = max(risk_level, "high", key=lambda x: ["low", "medium", "high", "critical"].index(x))
+            else:
+                risk_level = max(risk_level, "medium", key=lambda x: ["low", "medium", "high", "critical"].index(x))
 
         if permit_type == "hot_work":
             adj_sensors = db.get_sensors(adj_zone_id)
@@ -140,6 +150,7 @@ async def evaluate_permit_request(
                                 f"Elevated {sensor_type} ({latest_val} {threshold.get('unit', '')}) "
                                 f"detected in adjacent zone '{adj_name}'"
                             )
+                            risk_level = max(risk_level, "medium", key=lambda x: ["low", "medium", "high", "critical"].index(x))
                         if len(history) >= 2:
                             values = [r["value"] for r in history]
                             if values[-1] > values[-2]:

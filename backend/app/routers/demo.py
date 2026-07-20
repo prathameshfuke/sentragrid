@@ -5,7 +5,7 @@ import time
 import logging
 from fastapi import APIRouter, HTTPException
 from app.database import get_db, reset_mock_store
-from app.services.simulator import get_simulator
+from app.services.simulator import get_simulator, SENSOR_BASELINES, WORKER_ZONES
 from app.services.risk_engine import evaluate_all_zones
 from app.services.permit_agent import evaluate_permit_request, issue_permit_with_override
 
@@ -29,6 +29,14 @@ async def _execute_demo_sequence():
         reset_mock_store()
         db = get_db()
         
+        # Set initial worker positions
+        for worker_id, zone_id in WORKER_ZONES.items():
+            db.update_worker_position(worker_id, zone_id)
+            
+        # Write baseline readings for all sensors
+        for sensor_id, baseline in SENSOR_BASELINES.items():
+            db.add_sensor_reading(sensor_id, baseline["base"])
+            
         # Force a nominal zone risk evaluation
         await evaluate_all_zones()
         
